@@ -1,5 +1,5 @@
 # go-cat
-Colorful cat command written in Go
+Cat but with random colors. Written in Go.
 
 ## Why?
 

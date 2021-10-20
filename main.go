@@ -2,8 +2,8 @@ package main
 
 import (
 	"bytes"
-	"fmt"
 	"log"
+	"math/rand"
 	"os"
 	"strconv"
 )
@@ -11,37 +11,29 @@ import (
 func main() {
 	args := os.Args[1:]
 
-	if len(args) > 1 {
+	/*if len(args) > 1 {
 		log.Fatal("Currently only one file supported.")
-	}
+	}*/
 
 	if len(args) == 0 {
 		log.Fatal("Please enter file name.")
 	}
 
-	arg := args[0]
-
-	filerc, err := os.Open(arg)
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer filerc.Close()
-
-	buf := new(bytes.Buffer)
-	buf.ReadFrom(filerc)
-	contents := buf.String()
-
-	newStr := ""
-	iter := 1
-
-	for _, element := range contents {
-		newStr += string("\033[3"+strconv.Itoa(iter)+"m") + string(element)
-
-		if iter == 6 {
-			iter = 0
+	for _, element := range args {
+		filerc, err := os.Open(element)
+		if err != nil {
+			log.Fatal(err)
 		}
-		iter++
-	}
+		defer filerc.Close()
 
-	fmt.Println(newStr)
+		buf := new(bytes.Buffer)
+		buf.ReadFrom(filerc)
+		contents := buf.String()
+
+		for _, element := range contents {
+			curr := string("\033[3"+strconv.Itoa(rand.Intn(6-1)+1)+"m") + string(element)
+
+			print(curr)
+		}
+	}
 }

@@ -27,7 +27,6 @@ func main() {
 		contents := buf.String()
 
 		for _, element := range contents {
-			//curr := string("\033[3"+strconv.Itoa(rand.Intn(6-1)+1)+"m") + string(element)
 			curr := string("\033[3"+strconv.Itoa(iter)+"m") + string(element)
 			if iter == 6 {
 				iter = 0

@@ -3,17 +3,13 @@ package main
 import (
 	"bytes"
 	"log"
-	"math/rand"
 	"os"
 	"strconv"
 )
 
 func main() {
 	args := os.Args[1:]
-
-	/*if len(args) > 1 {
-		log.Fatal("Currently only one file supported.")
-	}*/
+	iter := 1
 
 	if len(args) == 0 {
 		log.Fatal("Please enter file name.")
@@ -31,9 +27,18 @@ func main() {
 		contents := buf.String()
 
 		for _, element := range contents {
-			curr := string("\033[3"+strconv.Itoa(rand.Intn(6-1)+1)+"m") + string(element)
+			//curr := string("\033[3"+strconv.Itoa(rand.Intn(6-1)+1)+"m") + string(element)
+			curr := string("\033[3"+strconv.Itoa(iter)+"m") + string(element)
+			if iter == 6 {
+				iter = 0
+			}
+			iter++
 
 			print(curr)
 		}
+		if iter > 1 {
+			iter--
+		}
+
 	}
 }

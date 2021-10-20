@@ -1,5 +1,5 @@
 # go-cat
-Cat but with random colors. Written in Go.
+Cat but with colors. Written in Go.
 
 ## Why?
 

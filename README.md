@@ -7,3 +7,10 @@ I wrote the same command in Kotlin before. However, I wanted something a bit fas
 
 ## Preview
 ![Preview](docs/preview.gif)
+
+## Usage
+
+### Print contents of file(s)
+```bash
+$ go-cat [file_names]
+```

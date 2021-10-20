@@ -16,7 +16,7 @@ func main() {
 	}
 
 	if len(args) == 0 {
-		log.Fatal("Please write in a file name.")
+		log.Fatal("Please enter file name.")
 	}
 
 	arg := args[0]
